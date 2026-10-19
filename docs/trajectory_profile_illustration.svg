@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620" role="img" aria-labelledby="title description">
+  <title id="title">Illustrative time-parameterized trajectory profiles</title>
+  <desc id="description">Conceptual bounded linear velocity trapezoid, angular velocity turn pulses, and tracking error axis. The curves are illustrative and are not measured from a robot run.</desc>
+  <rect width="1100" height="620" fill="#ffffff"/>
+  <text x="550" y="38" text-anchor="middle" font-family="sans-serif" font-size="23" font-weight="700" fill="#101828">Trajectory profile and tracking plots</text>
+  <text x="550" y="62" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#667085">Illustrative shape only — not measured run data. Generate actual results from a rosbag.</text>
+
+  <g font-family="sans-serif" fill="#344054">
+    <text x="75" y="110" font-size="16" font-weight="700">Generated linear speed</text>
+    <text x="75" y="315" font-size="16" font-weight="700">Generated angular speed</text>
+    <text x="75" y="520" font-size="16" font-weight="700">Cross-track error (example shape)</text>
+  </g>
+
+  <g stroke="#d0d5dd" stroke-width="1">
+    <path d="M110 125 H1020 M110 175 H1020 M110 225 H1020 M110 275 H1020"/>
+    <path d="M110 330 H1020 M110 380 H1020 M110 430 H1020 M110 480 H1020"/>
+    <path d="M110 535 H1020 M110 570 H1020"/>
+  </g>
+  <g stroke="#475467" stroke-width="1.5" fill="none">
+    <path d="M110 110 V280 H1020"/>
+    <path d="M110 315 V485 H1020"/>
+    <path d="M110 520 V585 H1020"/>
+  </g>
+  <g font-family="sans-serif" font-size="11" fill="#667085">
+    <text x="96" y="280" text-anchor="end">0</text>
+    <text x="96" y="225" text-anchor="end">v</text>
+    <text x="96" y="390" text-anchor="end">0</text>
+    <text x="96" y="340" text-anchor="end">+ω</text>
+    <text x="96" y="438" text-anchor="end">−ω</text>
+    <text x="96" y="578" text-anchor="end">0</text>
+    <text x="565" y="300" text-anchor="middle">time_from_start [s]</text>
+    <text x="565" y="505" text-anchor="middle">time_from_start [s]</text>
+    <text x="565" y="605" text-anchor="middle">elapsed time [s]</text>
+    <text x="1018" y="222" text-anchor="end">velocity limit</text>
+  </g>
+  <path d="M110 275 L190 265 L275 210 L775 210 L870 265 L960 275" fill="none" stroke="#1570ef" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M110 210 H1020" fill="none" stroke="#98a2b3" stroke-width="2" stroke-dasharray="8 6"/>
+  <path d="M110 390 L210 390 L260 350 L320 350 L365 390 L520 390 L570 435 L630 435 L680 390 L820 390 L870 350 L920 350 L970 390 L1020 390" fill="none" stroke="#7c3aed" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M110 578 C175 575 220 565 270 570 C340 575 380 548 440 558 C505 568 550 553 610 560 C700 570 750 540 820 552 C900 565 950 548 1020 556" fill="none" stroke="#16a34a" stroke-width="4"/>
+
+  <rect x="150" y="116" width="14" height="14" fill="#1570ef"/>
+  <text x="172" y="128" font-family="sans-serif" font-size="12" fill="#344054">bounded triangular/trapezoidal profile, zero speed at endpoints</text>
+  <rect x="150" y="322" width="14" height="14" fill="#7c3aed"/>
+  <text x="172" y="334" font-family="sans-serif" font-size="12" fill="#344054">angular motion follows path heading changes</text>
+  <rect x="150" y="527" width="14" height="14" fill="#16a34a"/>
+  <text x="172" y="539" font-family="sans-serif" font-size="12" fill="#344054">actual tracking-error curve must come from a recorded robot run</text>
+  <rect x="285" y="570" width="640" height="30" rx="5" fill="#fff4e5" stroke="#f79009"/>
+  <text x="605" y="590" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="700" fill="#7a3e00">Illustration only — do not report these curves or values as experimental results.</text>
+</svg>

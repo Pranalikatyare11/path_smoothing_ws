@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" role="img" aria-labelledby="title description">
+  <title id="title">ROS 2 waypoint trajectory architecture</title>
+  <desc id="description">Flow from ordered waypoints through Nav2 planning, path smoothing, time parameterization, odometry feedback tracking, and differential-drive commands, with global and local costmap obstacle checks and replanning.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475467"/>
+    </marker>
+    <marker id="blue-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1570ef"/>
+    </marker>
+    <style>
+      .box { rx: 12; stroke-width: 2; }
+      .main { fill: #eff8ff; stroke: #1570ef; }
+      .data { fill: #f0fdf4; stroke: #16a34a; }
+      .safety { fill: #fff7ed; stroke: #ea580c; }
+      .feedback { fill: #f5f3ff; stroke: #7c3aed; }
+      .title { font: 700 24px sans-serif; fill: #101828; }
+      .label { font: 700 16px sans-serif; fill: #101828; }
+      .small { font: 13px sans-serif; fill: #344054; }
+      .line { fill: none; stroke: #475467; stroke-width: 2.5; marker-end: url(#arrow); }
+      .loop { fill: none; stroke: #1570ef; stroke-width: 2.5; marker-end: url(#blue-arrow); }
+    </style>
+  </defs>
+
+  <rect width="1200" height="780" fill="#ffffff"/>
+  <text x="600" y="42" text-anchor="middle" class="title">Waypoint planning and time-indexed trajectory tracking</text>
+
+  <rect class="box main" x="40" y="95" width="220" height="86"/>
+  <text x="150" y="128" text-anchor="middle" class="label">Ordered waypoints</text>
+  <text x="150" y="153" text-anchor="middle" class="small">map-frame mission goals</text>
+
+  <rect class="box main" x="330" y="95" width="230" height="86"/>
+  <text x="445" y="128" text-anchor="middle" class="label">Nav2 planner</text>
+  <text x="445" y="153" text-anchor="middle" class="small">plan each consecutive leg</text>
+
+  <rect class="box main" x="630" y="95" width="230" height="86"/>
+  <text x="745" y="128" text-anchor="middle" class="label">Path processing</text>
+  <text x="745" y="153" text-anchor="middle" class="small">Chaikin smoothing + resampling</text>
+
+  <rect class="box main" x="930" y="95" width="230" height="86"/>
+  <text x="1045" y="128" text-anchor="middle" class="label">Timed trajectory</text>
+  <text x="1045" y="153" text-anchor="middle" class="small">pose, time, linear/angular speed</text>
+
+  <path class="line" d="M260 138 H322"/>
+  <path class="line" d="M560 138 H622"/>
+  <path class="line" d="M860 138 H922"/>
+
+  <rect class="box safety" x="220" y="260" width="300" height="110"/>
+  <text x="370" y="294" text-anchor="middle" class="label">Global costmap</text>
+  <text x="370" y="319" text-anchor="middle" class="small">static map + LiDAR obstacles</text>
+  <text x="370" y="342" text-anchor="middle" class="small">full-path collision validation</text>
+
+  <rect class="box safety" x="680" y="260" width="300" height="110"/>
+  <text x="830" y="294" text-anchor="middle" class="label">Rolling local costmap</text>
+  <text x="830" y="319" text-anchor="middle" class="small">live /scan + robot footprint</text>
+  <text x="830" y="342" text-anchor="middle" class="small">near-field path-prefix validation</text>
+
+  <path class="line" d="M445 181 V220 H370 V252"/>
+  <path class="line" d="M745 181 V220 H830 V252"/>
+  <path class="line" d="M520 315 H590 V210 H745 V190"/>
+  <path class="line" d="M680 315 H620 V210 H745 V190"/>
+
+  <rect class="box feedback" x="455" y="455" width="290" height="100"/>
+  <text x="600" y="490" text-anchor="middle" class="label">Time-indexed controller</text>
+  <text x="600" y="515" text-anchor="middle" class="small">elapsed time reference + pose/odom feedback</text>
+  <text x="600" y="538" text-anchor="middle" class="small">bounded velocity and acceleration commands</text>
+
+  <rect class="box data" x="870" y="455" width="250" height="100"/>
+  <text x="995" y="490" text-anchor="middle" class="label">Differential-drive robot</text>
+  <text x="995" y="515" text-anchor="middle" class="small">/cmd_vel → motion</text>
+  <text x="995" y="538" text-anchor="middle" class="small">/odom, /scan, TF → feedback</text>
+
+  <path class="line" d="M1045 181 V410 H600 V447"/>
+  <path class="line" d="M745 505 H862"/>
+  <path class="loop" d="M995 563 V640 H600 V563"/>
+  <text x="795" y="630" text-anchor="middle" class="small" fill="#1570ef">measured odometry updates tracking feedback</text>
+
+  <rect class="box safety" x="240" y="675" width="720" height="70"/>
+  <text x="600" y="704" text-anchor="middle" class="label">Blocked path → stop and pause trajectory clock → replan from current pose</text>
+  <text x="600" y="728" text-anchor="middle" class="small">Preserve all unreached waypoints in order; validate replacement before resuming</text>
+  <path class="loop" d="M370 370 V675"/>
+  <path class="loop" d="M830 370 V675"/>
+  <path class="loop" d="M240 710 H150 V138 H252"/>
+</svg>

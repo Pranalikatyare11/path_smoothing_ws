@@ -1,0 +1,11 @@
+<library path="trajectory_controller_plugin">
+  <class
+    name="path_smoothing_controller/TrajectoryPurePursuit"
+    type="path_smoothing_controller::Nav2TrajectoryController"
+    base_class_type="nav2_core::Controller">
+    <description>
+      Path smoothing, collision validation, time-parameterized trajectory generation,
+      and Pure Pursuit control for the Testbed differential-drive robot.
+    </description>
+  </class>
+</library>
