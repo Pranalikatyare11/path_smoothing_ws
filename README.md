@@ -2,6 +2,11 @@
 
 ROS 2 Humble assignment implementation for a simulated differential-drive robot. It plans through an ordered set of 2D waypoints, smooths and time-parameterizes the route, follows the trajectory using odometry feedback, and checks/replans around obstacles using Nav2 costmaps.
 
+Gazebo startup and live local-costmap publication have been verified. The repository includes `demo_F.mp4`, which demonstrates the code walkthrough and dynamic-obstacle scenario in simulation. See the demonstration and verification notes below for the scope of the recorded evidence.
+
+
+
+
 ## Assignment deliverables
 
 - Modular ROS 2 C++ implementation with a Gazebo robot simulation.
